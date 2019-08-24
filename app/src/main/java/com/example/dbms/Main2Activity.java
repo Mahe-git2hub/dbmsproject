@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -86,9 +87,9 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.roads) {
             startActivity(new Intent(this, junction.class));
         } else if (id == R.id.nav_share) {
-
+            startActivity(new Intent(this, FullscreenActivity.class));
         } else if (id == R.id.nav_send) {
-
+            Toast.makeText(this, "This is a dummy string", Toast.LENGTH_LONG).show();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
