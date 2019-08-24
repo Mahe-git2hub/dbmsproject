@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/roads"
+            android:icon="@drawable/ic_traffic_black_24dp"
+            android:title="@string/traffic" />
+        <item
+            android:id="@+id/junction"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_gallery" />
+        <item
+            android:id="@+id/traffic"
+            android:icon="@drawable/ic_drive_eta_black_24dp"
+            android:title="@string/menu_slideshow" />
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/menu_send" />
+        </menu>
+    </item>
+
+</menu>
