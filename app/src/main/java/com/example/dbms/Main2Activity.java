@@ -79,13 +79,13 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.traffic) {
+        if (id == R.id.vehicle) {
             // Handle the traffic related action
             startActivity(new Intent(Main2Activity.this, vehicle.class));
         } else if (id == R.id.junction) {
-            startActivity(new Intent(this, road.class));
-        } else if (id == R.id.roads) {
             startActivity(new Intent(this, junction.class));
+        } else if (id == R.id.roads) {
+            startActivity(new Intent(this, road.class));
         } else if (id == R.id.nav_share) {
             startActivity(new Intent(this, FullscreenActivity.class));
         } else if (id == R.id.nav_send) {

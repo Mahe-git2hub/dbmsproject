@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    android:background="@drawable/traffic">
 
     <include
         layout="@layout/app_bar_main2"
@@ -21,5 +22,13 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main2"
         app:menu="@menu/activity_main2_drawer" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_to_traffic_monitoring_system"
+        android:textColor="@color/thin_grip"
+        android:textAllCaps="true"
+        android:selectAllOnFocus="true" />
 
 </android.support.v4.widget.DrawerLayout>

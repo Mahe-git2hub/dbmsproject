@@ -3,8 +3,8 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Destined Developers</string>
+    <string name="nav_header_subtitle">destined_developers@dbms.amrita.edu</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -20,4 +20,9 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="about_the_team">About the team</string>
+    <string name="traffic_in_roads">traffic in roads</string>
+    <string name="junction">Junction</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="communicate">Communicate</string>
+    <string name="welcome_to_traffic_monitoring_system">Welcome to Traffic Monitoring System</string>
 </resources>
