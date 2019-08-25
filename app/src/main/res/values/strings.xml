@@ -31,4 +31,6 @@
     <string name="enter_your_two_character_region_code">Enter your two character region code</string>
     <string name="enter_your_district_code_preceding_your_4_digit_plate_number">Enter your district code preceding your 4 digit plate number</string>
     <string name="view_entered_data">View Data</string>
+    <string name="search_vehicle">search vehicle</string>
+    <string name="settings">Settings</string>
 </resources>
