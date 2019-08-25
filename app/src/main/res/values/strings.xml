@@ -25,4 +25,10 @@
     <string name="vehicles">Vehicles</string>
     <string name="communicate">Communicate</string>
     <string name="welcome_to_traffic_monitoring_system">Welcome to Traffic Monitoring System</string>
+    <string name="enter_your_vehicle_number">Enter your vehicle number</string>
+    <string name="save_vehicle">save vehicle</string>
+    <string name="enter_your_state_code">Enter your state code</string>
+    <string name="enter_your_two_character_region_code">Enter your two character region code</string>
+    <string name="enter_your_district_code_preceding_your_4_digit_plate_number">Enter your district code preceding your 4 digit plate number</string>
+    <string name="view_entered_data">View Data</string>
 </resources>

@@ -7,137 +7,71 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
-public class vehicle extends AppCompatActivity implements View.OnClickListener {
-
-    EditText vid, type, owner,contact;
-    Button btnAdd, btnDelete, btnModify, btnViewAll,  btnView;
+public class vehicle extends AppCompatActivity {
+    EditText vehicleno, district_code, region_code;
+    Button button;
     SQLiteDatabase db;
+    private Spinner spinner;
+    String[] statecodes = new String[]{"KL", "AP", "TN", "KA", "MH", "DL"};
+    ArrayAdapter<String> arrayAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicle);
-        vid = (EditText) findViewById(R.id.vid);
-        type = (EditText) findViewById(R.id.type);
-        owner = (EditText) findViewById(R.id.owner);
-        contact = (EditText) findViewById(R.id.contact);
-
-        btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnDelete = (Button) findViewById(R.id.btnDelete);
-        btnModify = (Button) findViewById(R.id.btnModify);
-        btnView = (Button) findViewById(R.id.btnView);
-        btnViewAll = (Button) findViewById(R.id.btnViewAll);
-        //Registering Event Handlers
-        btnAdd.setOnClickListener(this);
-        btnDelete.setOnClickListener(this);
-        btnModify.setOnClickListener(this);
-        btnView.setOnClickListener(this);
-        btnViewAll.setOnClickListener(this);
+        vehicleno = findViewById(R.id.vehicle_no);
+        district_code = findViewById(R.id.district_code);
+        region_code = findViewById(R.id.region_id);
+        button = findViewById(R.id.search_vehicle);
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line,
+                statecodes);
+        spinner.setAdapter(arrayAdapter);
         // Creating database and table  
         db = openOrCreateDatabase("TrafficDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS vehicle(vid VARCHAR,type VARCHAR,owner VARCHAR,contact varchar);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS vehicle(spinner VARCHAR,district_code VARCHAR," +
+                "region_code VARCHAR,vehicleno varchar);");
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (spinner.getContentDescription().toString().trim().length() == 0) {
+                    showMessage("Error", "Please enter vehicleID");
+                } else if (button.getText().toString().equals("save vehicle")) {
+                    // Inserting record 
+                    db.execSQL("INSERT INTO vehicle VALUES('" + spinner.getContentDescription() + "','"
+                            + district_code.getText() +
+                            "','" + region_code.getText() + "','" + vehicleno.getText() + "');");
+                    showMessage("Success", "Record added");
+                    clearText();
+                    button.setText(getString(R.string.view_entered_data));
+                } else {
+                    try (Cursor c = db.rawQuery("SELECT * FROM vehicle WHERE spinner='" +
+                                    spinner.getContentDescription() + "'",
+                            null)) {
+                        if (c.moveToFirst()) {
+                            // Displaying record if found 
+                            district_code.setText(c.getString(1));
+                            region_code.setText(c.getString(2));
+                            vehicleno.setText(c.getString(3));
+                            showMessage("Info", "THE DETAILS ARE AS FOLLOWS \n" +
+                                    spinner.getContentDescription().toString() + "\t"
+                                    + district_code.getText().toString() + "\t" + region_code.getText().toString() + "\t"
+                                    + vehicleno.getText().toString());
+                        }
+                    }
+                    button.setText(getString(R.string.save_vehicle));
+                }
+            }
+        });
     }
 
-    @Override
-    public void onClick(View view) {
-        // Adding a record
-        if (view == btnAdd) {
-            // Checking empty fields
-            if (vid.getText().toString().trim().length() == 0) {
-                showMessage("Error", "Please enter vehicleID");
-                return;
-            }
-            // Inserting record 
-            db.execSQL("INSERT INTO vehicle VALUES('" + vid.getText() + "','" + type.getText() +
-                    "','" + owner.getText() + "','" + contact.getText() +"');");
-            showMessage("Success", "Record added");
-            clearText();
-        }
-        // Deleting a record 
-        if (view == btnDelete) {
-            // Checking empty roll number 
-            if (vid.getText().toString().trim().length() == 0) {
-                showMessage("Error", "Please enter vehicleID");
-                return;
-            }
-            // Searching roll number 
-            Cursor c = db.rawQuery("SELECT * FROM vehicle WHERE vid='" + vid.getText() + "'", null);
-            if (c.moveToFirst()) {
-                // Deleting record if found 
-                showMessage("Success", "Record Deleted");
-                db.execSQL("DELETE FROM vehicle WHERE vid='" + vid.getText() + "'");
-            } else {
-                showMessage("Error", "Invalid ID");
-            }
-            clearText();
-        }
-        // Modifying a record 
-        if (view == btnModify) {
-            // Checking empty roll number 
-            if (vid.getText().toString().trim().length() == 0) {
-                showMessage("Error", "Please enter vehicleID");
-                return;
-            }
-            // Searching roll number 
-            Cursor c = db.rawQuery("SELECT * FROM vehicle WHERE vid'" + vid.getText() + "'", null);
-            if (c.moveToFirst()) {
-                // Modifying record if found 
-                db.execSQL("UPDATE vehicle SET type='" + type.getText() + "',owner='" + owner.getText() + "',contact='" + contact.getText() +
-                        "' WHERE vid='" + vid.getText() + "'");
-                showMessage("Success", "Record Modified");
-            }
-            else {
-                showMessage("Error", "Invalid ID");
-            }
-            clearText();
-        }
-        // Viewing a record 
-        if (view == btnView) {
-            // Checking empty roll number 
-            if (vid.getText().toString().trim().length() == 0) {
-                showMessage("Error", "Please enter vehicleID");
-                return;
-            }
-            // Searching roll number 
-            Cursor c = db.rawQuery("SELECT * FROM vehicle WHERE vid='" + vid.getText() + "'", null);
-            if (c.moveToFirst()) {
-                // Displaying record if found 
-                type.setText(c.getString(1));
-                owner.setText(c.getString(2));
-                contact.setText(c.getString(3));
 
-            } else {
-                showMessage("Error", "Invalid ID");
-                clearText();
-            }
-        }
-        // Viewing all records 
-        if (view == btnViewAll) {
-            // Retrieving all records 
-            Cursor c = db.rawQuery("SELECT * FROM vehicle", null);
-            // Checking if no records found 
-            if (c.getCount() == 0) {
-                showMessage("Error", "No records found");
-                return;
-            }
-            // Appending records to a string buffer 
-            StringBuffer buffer = new StringBuffer();
-            while (c.moveToNext())
-            {
-                buffer.append("vehicleID: " + c.getString(0) + "\n");
-                buffer.append("Type: " + c.getString(1) + "\n");
-                buffer.append("Owner: " + c.getString(2) + "\n");
-                buffer.append("Contact: " + c.getString(3) + "\n\n");
 
-            }
-            // Displaying all records 
-            showMessage("Vehicle Details", buffer.toString());
-        }
-
-    }
     public void showMessage(String title, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
@@ -147,10 +81,9 @@ public class vehicle extends AppCompatActivity implements View.OnClickListener {
     }
     public void clearText(){
 
-        vid.setText("");
-        type.setText("");
-        owner.setText("");
-        contact.setText("");
-        vid.requestFocus();
+        district_code.setText("");
+        region_code.setText("");
+        vehicleno.setText("");
+        spinner.requestFocus();
     }
 }

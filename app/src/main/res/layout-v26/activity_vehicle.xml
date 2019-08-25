@@ -18,7 +18,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="291dp"
         android:layout_marginEnd="34dp"
-        android:hint="@string/enter_your_vehicle_number"
+        android:hint="@string/enter_your_state_code"
         android:textAllCaps="true"
         android:textColor="@color/redd" />
 
@@ -44,7 +44,7 @@
         android:layout_marginTop="561dp"
         android:elevation="12dp"
         android:selectAllOnFocus="true"
-        android:text="@string/save_vehicle"
+        android:text="@string/search_vehicle"
         android:textColor="@color/magenta" />
 
     <Spinner
@@ -69,6 +69,7 @@
         android:layout_marginTop="305dp"
         android:layout_marginEnd="253dp"
         android:ems="10"
+        android:hint="@string/enter_your_two_character_region_code"
         android:inputType="numberSigned"
         android:textColor="@color/magenta" />
 
@@ -82,6 +83,7 @@
         android:layout_marginTop="304dp"
         android:layout_marginEnd="160dp"
         android:ems="10"
+        android:hint="@string/enter_your_district_code_preceding_your_4_digit_plate_number"
         android:inputType="textPersonName"
         android:textColor="@color/magenta" />
 
