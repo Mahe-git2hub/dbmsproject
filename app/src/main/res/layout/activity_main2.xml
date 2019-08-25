@@ -23,12 +23,12 @@
         app:headerLayout="@layout/nav_header_main2"
         app:menu="@menu/activity_main2_drawer" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome_to_traffic_monitoring_system"
-        android:textColor="@color/thin_grip"
-        android:textAllCaps="true"
-        android:selectAllOnFocus="true" />
+    <!--    <TextView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/welcome_to_traffic_monitoring_system"-->
+    <!--        android:textAllCaps="true"-->
+    <!--        android:textColor="@color/thin_grip"-->
+    <!--        />-->
 
 </android.support.v4.widget.DrawerLayout>
