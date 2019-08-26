@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".vehicle"
-    android:background="@color/cardview_dark_background"
     android:focusableInTouchMode="true"
     android:fadingEdge="vertical"
     android:focusable="auto"
+    android:background="@color/skin"
     android:scrollY="@dimen/cardview_default_radius">
 
     <android.support.design.widget.TextInputEditText
@@ -20,18 +20,21 @@
         android:layout_marginEnd="34dp"
         android:hint="@string/enter_your_vehicle_number"
         android:textAllCaps="true"
-        android:textColor="@color/redd" />
+        android:textColor="@color/red"
+        android:textSize="@dimen/header" />
 
     <android.support.v7.widget.AppCompatAutoCompleteTextView
         android:id="@+id/vehicle_info"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
+        android:layout_width="347dp"
+        android:layout_height="78dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="110dp"
         android:shadowColor="@color/bright_pink"
-        android:text="@string/enter_your_vehicle_number"
+        android:text="@string/please_enter_the_basic_vehicle_details"
         android:textColor="@color/thin_grip"
+        android:textSize="@dimen/fab_margin"
         android:textColorHighlight="@color/black_overlay" />
 
     <Button
@@ -45,7 +48,8 @@
         android:elevation="12dp"
         android:selectAllOnFocus="true"
         android:text="@string/save_vehicle"
-        android:textColor="@color/magenta" />
+        android:textColor="@color/magenta"
+        android:textColorHighlight="@color/cardview_dark_background" />
 
     <Spinner
         android:id="@+id/states"
@@ -84,5 +88,15 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="@color/magenta" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="245dp"
+        android:text="@string/turn_on_if_the_vehicle_is_a_emergency_vehicle" />
 
 </RelativeLayout>

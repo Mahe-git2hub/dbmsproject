@@ -33,4 +33,6 @@
     <string name="view_entered_data">View Data</string>
     <string name="search_vehicle">search vehicle</string>
     <string name="settings">Settings</string>
+    <string name="please_enter_the_basic_vehicle_details">Please enter the basic vehicle details</string>
+    <string name="turn_on_if_the_vehicle_is_a_emergency_vehicle">Turn on if the vehicle is a emergency vehicle</string>
 </resources>

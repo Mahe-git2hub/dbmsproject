@@ -28,6 +28,7 @@ public class vehicle extends AppCompatActivity {
         vehicleno = findViewById(R.id.vehicle_no);
         district_code = findViewById(R.id.district_code);
         region_code = findViewById(R.id.region_id);
+        spinner = findViewById(R.id.states);
         button = findViewById(R.id.search_vehicle);
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line,
                 statecodes);
