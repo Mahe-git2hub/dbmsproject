@@ -6,8 +6,8 @@
     tools:context=".vehicle"
     android:fadingEdge="vertical"
     android:focusable="auto"
-    android:background="@color/skin"
-    android:scrollY="@dimen/cardview_default_radius">
+    android:scrollY="@dimen/cardview_default_radius"
+    tools:ignore="PrivateResource">
 
     <EditText
         android:id="@+id/vehicle_no"
@@ -15,26 +15,23 @@
         android:layout_height="91dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="291dp"
-        android:layout_marginEnd="34dp"
+        android:layout_marginTop="352dp"
+        android:layout_marginEnd="23dp"
         android:hint="@string/enter_your_vehicle_number"
         android:textAllCaps="true"
         android:textColor="@color/red"
         android:textSize="@dimen/header" />
 
-    <android.support.v7.widget.AppCompatAutoCompleteTextView
-        android:id="@+id/vehicle_info"
-        android:layout_width="347dp"
-        android:layout_height="78dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="110dp"
-        android:shadowColor="@color/bright_pink"
+    <TextView
+        android:layout_width="393dp"
+        android:layout_height="98dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp"
         android:text="@string/please_enter_the_basic_vehicle_details"
-        android:textColor="@color/thin_grip"
-        android:textSize="@dimen/fab_margin"
-        android:textColorHighlight="@color/black_overlay" />
+        android:textSize="30sp"
+        android:textColor="@color/magenta"
+        android:layout_alignParentTop="true"
+        android:elevation="@dimen/fab_margin"/>
 
     <Button
         android:id="@+id/search_vehicle"
@@ -42,26 +39,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="561dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="640dp"
         android:elevation="12dp"
         android:selectAllOnFocus="true"
         android:text="@string/save_vehicle"
         android:textColor="@color/magenta"
         android:textColorHighlight="@color/cardview_dark_background" />
-
-    <Spinner
-        android:id="@+id/states"
-        android:layout_width="68dp"
-        android:layout_height="34dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="325dp"
-        android:layout_marginEnd="329dp"
-        android:gravity="center_horizontal"
-        android:textDirection="rtl"
-        android:textColor="@color/magenta"
-        android:autofillHints="Enter your state code" />
 
     <EditText
         android:id="@+id/region_id"
@@ -69,8 +54,8 @@
         android:layout_height="66dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="305dp"
-        android:layout_marginEnd="253dp"
+        android:layout_marginTop="383dp"
+        android:layout_marginEnd="257dp"
         android:ems="10"
         android:inputType="numberSigned"
         android:textColor="@color/magenta" />
@@ -82,8 +67,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="304dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginTop="371dp"
+        android:layout_marginEnd="147dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="@color/magenta" />
@@ -94,8 +79,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginBottom="245dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="66dp"
+        android:layout_marginBottom="246dp"
         android:text="@string/turn_on_if_the_vehicle_is_a_emergency_vehicle" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="260dp"
+        android:text="@string/enter_your_state_code" />
 
 </RelativeLayout>
