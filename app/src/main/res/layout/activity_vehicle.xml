@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".vehicle"
-    android:focusableInTouchMode="true"
     android:fadingEdge="vertical"
     android:focusable="auto"
     android:background="@color/skin"
     android:scrollY="@dimen/cardview_default_radius">
 
-    <android.support.design.widget.TextInputEditText
+    <EditText
         android:id="@+id/vehicle_no"
         android:layout_width="98dp"
         android:layout_height="91dp"

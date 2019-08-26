@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 public class vehicle extends AppCompatActivity {
     EditText vehicleno, district_code, region_code;
@@ -19,8 +20,8 @@ public class vehicle extends AppCompatActivity {
     private Spinner spinner;
     String[] statecodes = new String[]{"KL", "AP", "TN", "KA", "MH", "DL"};
     ArrayAdapter<String> arrayAdapter;
-
-
+    Switch aSwitch;
+    String switcher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,21 +33,28 @@ public class vehicle extends AppCompatActivity {
         button = findViewById(R.id.search_vehicle);
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line,
                 statecodes);
+        aSwitch = findViewById(R.id.switch1);
         spinner.setAdapter(arrayAdapter);
+
         // Creating database and table  
         db = openOrCreateDatabase("TrafficDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS vehicle(spinner VARCHAR,district_code VARCHAR," +
-                "region_code VARCHAR,vehicleno varchar);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS vehicle(spinner VARCHAR PRIMARY KEY,district_code VARCHAR," +
+                "region_code VARCHAR,vehicleno varchar,switcher varchar);");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (aSwitch.isChecked())
+                    switcher = aSwitch.getTextOn().toString();
+                else
+                    switcher = aSwitch.getTextOff().toString();
+
                 if (spinner.getContentDescription().toString().trim().length() == 0) {
                     showMessage("Error", "Please enter vehicleID");
                 } else if (button.getText().toString().equals("save vehicle")) {
                     // Inserting record 
                     db.execSQL("INSERT INTO vehicle VALUES('" + spinner.getContentDescription() + "','"
                             + district_code.getText() +
-                            "','" + region_code.getText() + "','" + vehicleno.getText() + "');");
+                            "','" + region_code.getText() + "','" + vehicleno.getText() + "','" + switcher + "');");
                     showMessage("Success", "Record added");
                     clearText();
                     button.setText(getString(R.string.view_entered_data));
@@ -59,10 +67,11 @@ public class vehicle extends AppCompatActivity {
                             district_code.setText(c.getString(1));
                             region_code.setText(c.getString(2));
                             vehicleno.setText(c.getString(3));
+
                             showMessage("Info", "THE DETAILS ARE AS FOLLOWS \n" +
                                     spinner.getContentDescription().toString() + "\t"
                                     + district_code.getText().toString() + "\t" + region_code.getText().toString() + "\t"
-                                    + vehicleno.getText().toString());
+                                    + vehicleno.getText().toString() + aSwitch.getText().toString());
                         }
                     }
                     button.setText(getString(R.string.save_vehicle));
